@@ -78,8 +78,6 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          <Keunggulan />
-
           <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
             <div className="container mx-auto px-6 text-center">
               <ScrollReveal>
@@ -105,6 +103,8 @@ const App: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <Keunggulan />
 
           <section id="testimoni" className="py-20 bg-white overflow-hidden">
              <div className="container mx-auto px-6 max-w-5xl">
