@@ -1,4 +1,3 @@
-// src/components/BottomNavbar.tsx
 import React, { useState, useEffect } from 'react';
 import { HiHome, HiTicket, HiChatAlt2 } from 'react-icons/hi';
 
@@ -13,13 +12,10 @@ const BottomNavbar: React.FC = () => {
     { id: 'kontak' },
   ];
 
-  // Effect untuk SCROLL-SPY
   useEffect(() => {
-    // PERBAIKAN: Menggunakan type guard (el): el is HTMLElement
-    // untuk memastikan tidak ada elemen 'null' di dalam array 'sections'
     const sections = sectionsToTrack
       .map(link => document.getElementById(link.id))
-      .filter((el): el is HTMLElement => el !== null); // <-- INI PERBAIKANNYA
+      .filter((el): el is HTMLElement => el !== null);
     
     if (sections.length === 0) return;
 
@@ -36,7 +32,6 @@ const BottomNavbar: React.FC = () => {
       });
     }, observerOptions);
 
-    // Sekarang 'sections' dijamin aman dari 'null'
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
@@ -54,7 +49,6 @@ const BottomNavbar: React.FC = () => {
       <div className="container mx-auto h-full px-6">
         <div className="flex justify-around items-center h-full">
 
-          {/* === Tombol Beranda (Dinamis) === */}
           <a 
             href="#hero" 
             className={`
@@ -72,7 +66,6 @@ const BottomNavbar: React.FC = () => {
             <span>Beranda</span>
           </a>
 
-          {/* === Tombol Tengah (Paket) (Dinamis) === */}
           <a 
             href="#paket"
             className={`
@@ -93,7 +86,6 @@ const BottomNavbar: React.FC = () => {
             <HiTicket className="w-8 h-8" />
           </a>
           
-          {/* === Tombol Kontak (Dinamis) === */}
           <a 
             href="#kontak" 
             className={`

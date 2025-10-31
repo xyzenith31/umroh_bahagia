@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Tipe props yang dibutuhkan komponen ini
 interface CustomSelectProps {
   options: string[];
   placeholder: string;
-  // Fungsi untuk mengirim value yang dipilih ke parent
   onChange: (value: string) => void; 
 }
 
@@ -18,44 +16,36 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
   
-  // Ref untuk deteksi klik di luar komponen
   const selectRef = useRef<HTMLDivElement>(null);
 
-  // Efek untuk menutup dropdown saat klik di luar
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-    // Tambahkan listener
     document.addEventListener('mousedown', handleClickOutside);
-    // Hapus listener saat komponen unmount
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-  // Fungsi saat salah satu opsi dipilih
   const handleSelect = (option: string) => {
-    setSelectedValue(option); // Update tampilan
-    onChange(option); // Kirim data ke parent (FormPendaftaran)
-    setIsOpen(false); // Tutup dropdown
+    setSelectedValue(option);
+    onChange(option);
+    setIsOpen(false);
   };
 
-  // Varian animasi untuk dropdown menu
   const menuVariants = {
     hidden: { opacity: 0, y: -10, transition: { duration: 0.2 } },
     visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
   };
 
   return (
-    // Wrapper utama, pakai ref
     <div className="relative" ref={selectRef}>
       
-      {/* 1. Tombol "Select" (yang terlihat) */}
       <button
-        type="button" // Penting agar tidak submit form
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="
           w-full px-4 py-3 border border-gray-300 rounded-lg bg-white
@@ -64,12 +54,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           transition duration-300
         "
       >
-        {/* Teks placeholder atau value yang dipilih */}
         <span className={selectedValue ? 'text-gray-900' : 'text-gray-500'}>
           {selectedValue || placeholder}
         </span>
         
-        {/* Ikon panah yang bisa berputar */}
         <HiChevronDown 
           className={`
             w-5 h-5 text-gray-400 
@@ -79,7 +67,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         />
       </button>
 
-      {/* 2. Dropdown Menu (yang muncul/hilang) */}
       <AnimatePresence>
         {isOpen && (
           <motion.ul

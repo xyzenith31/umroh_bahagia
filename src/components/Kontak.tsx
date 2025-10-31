@@ -30,7 +30,7 @@ const Kontak: React.FC = () => {
         
         <ScrollReveal delay={0.1}>
           <a 
-            href="https://wa.me/6281234567890" 
+            href="https://wa.me/6281333333345" 
             target="_blank" 
             rel="noopener noreferrer"
             className="

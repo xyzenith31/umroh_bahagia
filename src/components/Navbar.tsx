@@ -9,8 +9,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { id: 'hero', title: 'Beranda' },
-    { id: 'keunggulan', title: 'Keunggulan' },
     { id: 'paket', title: 'Paket' },
+    { id: 'keunggulan', title: 'Keunggulan' },
     { id: 'testimoni', title: 'Testimoni' },
     { id: 'kontak', title: 'Kontak' },
   ];

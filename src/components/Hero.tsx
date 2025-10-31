@@ -5,7 +5,6 @@ const Hero: React.FC = () => {
     <section id="hero" className="bg-brand-pink-light pt-20 pb-32">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
         
-        {/* Konten Teks di Kiri */}
         <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Wujudkan Ibadah Umroh Impian Anda

@@ -1,8 +1,6 @@
-// src/components/Keunggulan.tsx
 import React from 'react';
-// Kita pakai ikon dari react-icons yang sudah ter-install
-import { FaUserCheck, FaStar, FaShieldAlt } from 'react-icons/fa';
-import ScrollReveal from './ScrollReveal'; // Kita gunakan lagi animasi scroll
+import { FaUserCheck, FaStar, FaShieldAlt, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import ScrollReveal from './ScrollReveal'; 
 
 const Keunggulan: React.FC = () => {
   const features = [
@@ -42,7 +40,6 @@ const Keunggulan: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-8">
           {features.map((feature) => (
             <ScrollReveal delay={feature.delay} key={feature.title}>
-              {/* Anda bisa tambahkan hover effect di div ini jika mau */}
               <div className="w-full sm:w-80 p-6 bg-gray-50 rounded-lg shadow-md text-center transform hover:-translate-y-2 transition duration-300">
                 <div className="flex justify-center mb-4">
                   {feature.icon}
@@ -57,6 +54,81 @@ const Keunggulan: React.FC = () => {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={0.4}>
+          <div className="mt-16 max-w-4xl mx-auto text-left p-6 sm:p-8 bg-gray-50 rounded-lg shadow-md">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              Detail Paket Unggulan (24 JT + 1JT Perlengkapan)
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm text-gray-700">
+              
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">Harga termasuk:</h4>
+                <ul className="space-y-1.5"> 
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Umroh 2x
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Tiket pesawat PP
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Bagasi 23 + kabin 7kg
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Hotel Madinah & Makkah
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Makan 3x sehari
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Transportasi bus AC
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Muthawif (pembimbing ibadah)
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> City tour Madinah & Makkah
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Handling bandara Surabaya & Arab Saudi
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Perlengkapan umroh
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Air zam-zam 5 liter
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Manasik asrama haji Surabaya
+                  </li>
+                  <li className="flex items-center">
+                    <FaCheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" /> Free akomodasi dan menginap dari asrama haji ke bandara
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">*Harga belum termasuk:</h4>
+                <ul className="space-y-1.5">
+                  <li className="flex items-center">
+                    <FaTimesCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" /> Passport
+                  </li>
+                  <li className="flex items-center">
+                    <FaTimesCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" /> Vaksin miningitis & polio
+                  </li>
+                  <li className="flex items-center">
+                    <FaTimesCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" /> Kelebihan bagasi
+                  </li>
+                  <li className="flex items-center">
+                    <FaTimesCircle className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" /> Perlengkapan 1jt
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </ScrollReveal>
         
       </div>
     </section>

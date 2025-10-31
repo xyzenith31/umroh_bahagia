@@ -11,13 +11,9 @@ import Keunggulan from './components/Keunggulan';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
 
-// --- PERUBAHAN 1: Impor gambar paket dari assets ---
 import paketGambar from './assets/hero-image.png';
 
 const heroImageUrl = 'https://images.pexels.com/photos/32290180/pexels-photo-32290180.jpeg';
-
-// --- PERUBAHAN 2: Hapus variabel gambar pexels yang lama ---
-// const paketImg1 = 'https://images.pexels.com/photos/4346403/pexels-photo-4346403.jpeg';
 
 const testimonials = [
   {
@@ -68,7 +64,6 @@ const App: React.FC = () => {
             className="h-screen min-h-[600px] w-full flex items-center justify-center relative text-white text-center bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImageUrl})` }}
           >
-            {/* ... (konten hero tetap sama) ... */}
             <div className="absolute inset-0 bg-black/50 z-0"></div>
             <div className="container mx-auto px-6 z-10">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 drop-shadow-lg">
@@ -86,7 +81,6 @@ const App: React.FC = () => {
             </div>
           </section>
 
-          {/* === PERUBAHAN 3: Bagian Paket Diperbarui === */}
           <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
             <div className="container mx-auto px-6 text-center">
               <ScrollReveal>
@@ -101,12 +95,10 @@ const App: React.FC = () => {
               
               <div className="flex flex-wrap justify-center gap-8">
                 
-                {/* --- Paket 1 --- */}
                 <ScrollReveal delay={0.2}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* === PERUBAHAN: object-fit dari cover menjadi contain, dan tinggi disesuaikan === */}
                     <img src={paketGambar} alt="Paket Umroh Murah 24 Jt" className="w-full h-auto object-contain p-4"/>
-                    <div className="p-6 pt-0"> {/* pt-0 agar tidak ada padding ganda dari p-4 di img */}
+                    <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket 16 Hari (24 Jt)</h3>
                       <p className="text-gray-700 mb-4">Surabaya - Jeddah (Lion Air). Hotel Nada Al Salam & Shamokh Al Maqom.</p>
                       <a href="#kontak" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
@@ -114,10 +106,8 @@ const App: React.FC = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* --- Paket 2 --- */}
                 <ScrollReveal delay={0.3}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* === PERUBAHAN: object-fit dari cover menjadi contain, dan tinggi disesuaikan === */}
                     <img src={paketGambar} alt="Paket Umroh Plus" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Plus (12 Hari)</h3>
@@ -127,10 +117,8 @@ const App: React.FC = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* --- Paket 3 --- */}
                 <ScrollReveal delay={0.4}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* === PERUBAHAN: object-fit dari cover menjadi contain, dan tinggi disesuaikan === */}
                     <img src={paketGambar} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Keluarga (9 Hari)</h3>
@@ -143,13 +131,10 @@ const App: React.FC = () => {
               </div>
             </div>
           </section>
-          {/* === AKHIR PERUBAHAN === */}
-
 
           <Keunggulan />
 
           <section id="testimoni" className="py-20 bg-white overflow-hidden">
-             {/* ... (konten testimoni tetap sama) ... */}
              <div className="container mx-auto px-6 max-w-5xl">
                 
                 <ScrollReveal>
