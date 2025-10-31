@@ -10,7 +10,7 @@ import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
 
 const heroImageUrl = 'https://images.pexels.com/photos/32290180/pexels-photo-32290180.jpeg';
-const paketImg1 = 'https://images.pexels.com/photos/4019159/pexels-photo-4019159.jpeg';
+const paketImg1 = 'https://images.pexels.com/photos/4346403/pexels-photo-4346403.jpeg';
 
 const testimonials = [
   {
