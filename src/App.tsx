@@ -1,40 +1,87 @@
 import React from 'react';
-// 1. IMPORT FRAMER MOTION (PENTING UNTUK PERFORMA)
 import { LazyMotion, domAnimation } from 'framer-motion';
 
-// --- Import Komponen ---
 import Navbar from './components/Navbar';
 import BottomNavbar from './components/BottomNavbar';
-import Beranda from './pages/Beranda';
-import Footer from './components/Footer.jsx'; 
-import ScrollReveal from './components/ScrollReveal'; // <-- IMPORT ANIMASI
-import FormPendaftaran from './components/FormPendaftaran'; // <-- IMPORT FITUR BARU
+import Footer from './components/Footer';
+import ScrollReveal from './components/ScrollReveal';
+import Keunggulan from './components/Keunggulan';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import Kontak from './components/Kontak';
 
-// --- URL Foto ---
-const paketImg1 = 'https://images.pexels.com/photos/3303615/pexels-photo-3303615.jpeg';
-const paketImg2 = 'https://images.pexels.com/photos/4019159/pexels-photo-4019159.jpeg';
-const testimoniAvatar = 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg';
+const heroImageUrl = 'https://images.pexels.com/photos/32290180/pexels-photo-32290180.jpeg';
+const paketImg1 = 'https://images.pexels.com/photos/4019159/pexels-photo-4019159.jpeg';
+
+const testimonials = [
+  {
+    img: 'https://images.pexels.com/photos/11265818/pexels-photo-11265818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    name: 'Bapak Rahman',
+    location: 'Jamaah Umroh, Surabaya',
+    quote: 'Hotelnya dekat sekali dengan masjid, jadi sangat nyaman untuk ibadah. Makanan juga cocok di lidah. Terima kasih UmrohBahagia.',
+    delay: 0.2
+  },
+  {
+    img: 'https://images.pexels.com/photos/7810313/pexels-photo-7810313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    name: 'Bapak Heru',
+    location: 'Jamaah Umroh, Bandung',
+    quote: 'Ini umroh pertama saya. Awalnya bingung, tapi tim pembimbing sangat sabar dan profesional. Pengalaman yang tak terlupakan.',
+    delay: 0.3
+  },
+  {
+    img: 'https://images.pexels.com/photos/8139556/pexels-photo-8139556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    name: 'Bapak Jaya',
+    location: 'Jamaah Umroh, Medan',
+    quote: 'Kami berangkat sekeluarga dan semua dilayani dengan baik, dari yang muda sampai yang tua. Fasilitasnya sangat ramah lansia.',
+    delay: 0.4
+  },
+  {
+    img: 'https://images.pexels.com/photos/10398634/pexels-photo-10398634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    name: 'Bapak Abdullah',
+    location: 'Jamaah Umroh, Makassar',
+    quote: 'Sangat amanah travel ini. Semua yang dijanjikan di brosur sesuai dengan kenyataan. Pasti akan rekomendasi ke teman-teman.',
+    delay: 0.1 
+  }
+];
 
 
 const App: React.FC = () => {
   return (
-    // 2. BUNGKUS APLIKASI DENGAN LAZYMOTION
     <LazyMotion features={domAnimation}>
+      
+      <ScrollProgressBar /> 
+      
       <div className="font-sans bg-white">
         
         <Navbar />
         
         <main>
           
-          {/* Bagian Beranda (Hero) */}
-          {/* (Komponen Beranda.tsx tidak perlu ScrollReveal karena sudah tampil pertama) */}
-          <Beranda />
-          
-          {/* --- Bagian Paket --- */}
+          <section 
+            id="hero" 
+            className="h-screen min-h-[600px] w-full flex items-center justify-center relative text-white text-center bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImageUrl})` }}
+          >
+            <div className="absolute inset-0 bg-black/50 z-0"></div>
+            <div className="container mx-auto px-6 z-10">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 drop-shadow-lg">
+                UMROH MURAH 24JT
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 drop-shadow-md">
+                Perjalanan spiritual yang nyaman, aman, dan penuh berkah.
+              </p>
+              <a 
+                href="#paket"
+                className="bg-brand-pink text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-brand-pink-dark transition duration-300 shadow-lg transform hover:scale-105a"
+              >
+                Lihat Paket
+              </a>
+            </div>
+          </section>
+
+          <Keunggulan />
+
           <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
             <div className="container mx-auto px-6 text-center">
-              
-              {/* Judul Section (dianimasikan) */}
               <ScrollReveal>
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">
                   Paket Umroh Pilihan
@@ -44,26 +91,10 @@ const App: React.FC = () => {
                   dengan kenyamanan dan budget Anda.
                 </p>
               </ScrollReveal>
-              
-              {/* Daftar Card Paket (dianimasikan satu per satu) */}
               <div className="flex flex-wrap justify-center gap-8">
-                
-                {/* Card 1 (delay 0.1 detik) */}
-                <ScrollReveal delay={0.1}>
-                  <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketImg1} alt="Paket Umroh Hemat" className="w-full h-52 object-cover"/>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Hemat (9 Hari)</h3>
-                      <p className="text-gray-700 mb-4">Hotel bintang 4, penerbangan direct, dan bimbingan intensif.</p>
-                      <a href="#daftar" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
-                    </div>
-                  </div>
-                </ScrollReveal>
-                
-                {/* Card 2 (delay 0.2 detik) */}
                 <ScrollReveal delay={0.2}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketImg2} alt="Paket Umroh Plus" className="w-full h-52 object-cover"/>
+                    <img src={paketImg1} alt="Paket Umroh Plus" className="w-full h-52 object-cover"/>
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Plus (12 Hari)</h3>
                       <p className="text-gray-700 mb-4">Hotel bintang 5, plus city tour (Mekkah, Madinah, Jeddah).</p>
@@ -71,47 +102,52 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 </ScrollReveal>
-
               </div>
             </div>
           </section>
 
-          {/* --- Bagian Testimoni --- */}
           <section id="testimoni" className="py-20 bg-white overflow-hidden">
-             <div className="container mx-auto px-6 text-center max-w-3xl">
-                {/* Animasikan seluruh blok testimoni */}
+             <div className="container mx-auto px-6 max-w-5xl">
+                
                 <ScrollReveal>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-8">
+                  <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">
                     Apa Kata Jamaah Kami
                   </h2>
-                  <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-                    <img 
-                      src={testimoniAvatar} 
-                      alt="Testimoni Jamaah" 
-                      className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-brand-pink-light"
-                    />
-                    <blockquote className="text-gray-700 text-lg italic mb-4">
-                      "Pelayanannya luar biasa, sangat dibantu dari awal sampai akhir.
-                      Bimbingannya juga sangat jelas dan menenangkan. UmrohBahagia memang top!"
-                    </blockquote>
-                    <p className="font-semibold text-gray-900">- Bapak Fulan</p>
-                    <p className="text-sm text-gray-500">Jamaah Umroh, Jakarta</p>
-                  </div>
                 </ScrollReveal>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  {testimonials.map((testi, index) => (
+                    
+                    <ScrollReveal 
+                      delay={testi.delay} 
+                      key={testi.name}
+                      className={index === 4 ? 'md:col-span-2' : ''}
+                    >
+                      <div className="bg-gray-50 p-8 rounded-lg shadow-md h-full flex flex-col justify-center text-center">
+                        <img 
+                          src={testi.img} 
+                          alt={`Testimoni ${testi.name}`} 
+                          className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-brand-pink-light object-cover"
+                          onError={(e) => (e.currentTarget.src = 'https://placehold.co/100x100/CCCCCC/FFFFFF?text=?')}
+                        />
+                        <blockquote className="text-gray-700 text-lg italic mb-4">
+                          "{testi.quote}"
+                        </blockquote>
+                        <p className="font-semibold text-gray-900">- {testi.name}</p>
+                        <p className="text-sm text-gray-500">{testi.location}</p>
+                      </div>
+                    </ScrollReveal>
+                    
+                  ))}
+                  
+                </div>
              </div>
           </section>
-          
-          {/* --- 3. FITUR BARU: FORM PENDAFTARAN --- */}
-          <FormPendaftaran />
-
+          <Kontak />
         </main>
-        
-        {/* --- FOOTER (KONTAK) --- */}
         <Footer /> 
-        
-        {/* --- NAVBAR BAWAH (MOBILE) --- */}
         <BottomNavbar /> 
-        
       </div>
     </LazyMotion>
   );

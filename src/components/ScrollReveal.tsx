@@ -1,16 +1,21 @@
+// src/components/ScrollReveal.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Terima children (konten) dan delay (opsional)
+// Terima children, delay, dan className (BARU)
 const ScrollReveal = ({ 
   children, 
-  delay = 0 
+  delay = 0,
+  className = "" // <-- 1. TAMBAHKAN INI
 }: { 
   children: React.ReactNode; 
   delay?: number;
+  className?: string; // <-- 2. TAMBAHKAN TIPE PROP INI
 }) => {
   return (
     <motion.div
+      className={className} // <-- 3. GUNAKAN PROP className DI SINI
+      
       // Animasi Awal (Hilang)
       initial={{ opacity: 0, y: 50 }}
       
@@ -25,8 +30,6 @@ const ScrollReveal = ({
       }}
       
       // Pengaturan Viewport
-      // "once: true" -> Animasi hanya jalan sekali
-      // "amount: 0.3" -> Animasi jalan saat 30% elemen terlihat
       viewport={{ once: true, amount: 0.3 }}
     >
       {children}
