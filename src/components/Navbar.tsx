@@ -7,16 +7,13 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero'); 
 
-  // --- PERUBAHAN DI SINI ---
   const navLinks = [
     { id: 'hero', title: 'Beranda' },
     { id: 'paket', title: 'Paket' },
     { id: 'keunggulan', title: 'Keunggulan' },
     { id: 'testimoni', title: 'Testimoni' },
-    { id: 'galeri', title: 'Galeri' }, // TAMBAHKAN INI
     { id: 'kontak', title: 'Kontak' },
   ];
-  // --- AKHIR PERUBAHAN ---
 
   // Effect untuk deteksi scroll (mengubah background navbar)
   useEffect(() => {
@@ -31,11 +28,9 @@ const Navbar: React.FC = () => {
 
   // Effect untuk SCROLL-SPY (deteksi section aktif)
   useEffect(() => {
-    // PERBAIKAN: Menggunakan type guard (el): el is HTMLElement
-    // untuk memastikan tidak ada elemen 'null' di dalam array 'sections'
     const sections = navLinks
       .map(link => document.getElementById(link.id))
-      .filter((el): el is HTMLElement => el !== null); // <-- INI PERBAIKANNYA
+      .filter((el): el is HTMLElement => el !== null); 
     
     if (sections.length === 0) return;
 
@@ -52,11 +47,10 @@ const Navbar: React.FC = () => {
       });
     }, observerOptions);
 
-    // Sekarang 'sections' dijamin aman dari 'null'
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [navLinks]); // navLinks sekarang jadi dependensi
+  }, [navLinks]); // (2) UBAH DEPENDENCY HANYA 'navLinks'
 
   return (
     <header 
