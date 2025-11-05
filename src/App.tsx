@@ -120,19 +120,6 @@ const App: React.FC = () => {
 
               <div className="flex flex-wrap justify-center gap-8">
                 
-                {/* --- KARTU PAKET 1 --- */}
-                <ScrollReveal delay={0.2}>
-                  <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* GAMBAR 1 */}
-                    <img src={paketGambar16Hari} alt="Paket Umroh Murah 24 Jt" className="w-full h-auto object-contain p-4"/>
-                    <div className="p-6 pt-0">
-                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket 16 Hari (24 Jt)</h3>
-                      <p className="text-gray-700 mb-4">Surabaya - Jeddah (Lion Air). Hotel Nada Al Salam & Shamokh Al Maqom.</p>
-                      <a href="#kontak" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
-                    </div>
-                  </div>
-                </ScrollReveal>
-
                 {/* --- KARTU PAKET 2 --- */}
                 <ScrollReveal delay={0.3}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
