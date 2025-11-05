@@ -5,12 +5,14 @@ import videoContoh1 from '../assets/galeri/1.mp4';
 import videoContoh2 from '../assets/galeri/2.mp4';
 import videoContoh3 from '../assets/galeri/3.mp4';
 import videoContoh4 from '../assets/galeri/4.mp4';
+import videoContoh5 from '../assets/galeri/5.mp4'; 
 
 const videoList = [
   { src: videoContoh1, title: 'Testimoni Jamaah' },
   { src: videoContoh2, title: 'Suasana Hotel' },
   { src: videoContoh3, title: 'Kegiatan Manasik' },
   { src: videoContoh4, title: 'Momen di Masjidil Haram' },
+  { src: videoContoh5, title: 'Video Tambahan Anda' },
 ];
 
 const Galeri: React.FC = () => {
@@ -28,7 +30,7 @@ const Galeri: React.FC = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             
             {videoList.map((video, index) => (
               <div 
@@ -36,10 +38,10 @@ const Galeri: React.FC = () => {
                 className="
                   w-full bg-white rounded-xl shadow-lg overflow-hidden 
                   transform hover:-translate-y-1 transition duration-300
-                  border border-gray-200 p-2 sm:p-3 {/* BORDER DITAMBAHKAN DI SINI */}
+                  border border-gray-200 p-2 sm:p-3 
                 "
               >
-                <div className="w-full aspect-[9/16] bg-black rounded-lg overflow-hidden">
+                <div className="w-full aspect-[9/16] bg-black rounded-lg overflow-hidden"> 
                   <video
                     src={video.src}
                     controls
