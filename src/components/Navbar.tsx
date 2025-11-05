@@ -7,13 +7,16 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero'); 
 
+  // --- PERUBAHAN DI SINI ---
   const navLinks = [
     { id: 'hero', title: 'Beranda' },
     { id: 'paket', title: 'Paket' },
     { id: 'keunggulan', title: 'Keunggulan' },
     { id: 'testimoni', title: 'Testimoni' },
+    { id: 'galeri', title: 'Galeri' }, // TAMBAHKAN INI
     { id: 'kontak', title: 'Kontak' },
   ];
+  // --- AKHIR PERUBAHAN ---
 
   // Effect untuk deteksi scroll (mengubah background navbar)
   useEffect(() => {
@@ -53,7 +56,7 @@ const Navbar: React.FC = () => {
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [navLinks]);
+  }, [navLinks]); // navLinks sekarang jadi dependensi
 
   return (
     <header 

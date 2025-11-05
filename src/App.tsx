@@ -10,8 +10,13 @@ import ScrollReveal from './components/ScrollReveal';
 import Keunggulan from './components/Keunggulan';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
+import Galeri from './components/Galeri'; // 1. IMPORT GALERI BARU
 
-import paketGambar from './assets/hero-image.png';
+// Ini import dari perbaikan Anda sebelumnya (3 flyer)
+import paketGambar16Hari from './assets/heroimage/1.png';
+import paketGambarPlus from './assets/heroimage/2.jpg'; // (Asumsi nama file)
+import paketGambarKeluarga from './assets/heroimage/3.jpg'; // (Asumsi nama file)
+
 
 const heroImageUrl = 'https://images.pexels.com/photos/32290180/pexels-photo-32290180.jpeg';
 
@@ -95,9 +100,10 @@ const App: React.FC = () => {
               
               <div className="flex flex-wrap justify-center gap-8">
                 
+                {/* --- KARTU PAKET 1 (Flyer 1) --- */}
                 <ScrollReveal delay={0.2}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketGambar} alt="Paket Umroh Murah 24 Jt" className="w-full h-auto object-contain p-4"/>
+                    <img src={paketGambar16Hari} alt="Paket Umroh Murah 24 Jt" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket 16 Hari (24 Jt)</h3>
                       <p className="text-gray-700 mb-4">Surabaya - Jeddah (Lion Air). Hotel Nada Al Salam & Shamokh Al Maqom.</p>
@@ -106,9 +112,10 @@ const App: React.FC = () => {
                   </div>
                 </ScrollReveal>
 
+                {/* --- KARTU PAKET 2 (Flyer 2) --- */}
                 <ScrollReveal delay={0.3}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketGambar} alt="Paket Umroh Plus" className="w-full h-auto object-contain p-4"/>
+                    <img src={paketGambarPlus} alt="Paket Umroh Plus" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Plus (12 Hari)</h3>
                       <p className="text-gray-700 mb-4">Hotel bintang 5, plus city tour (Mekkah, Madinah, Jeddah).</p>
@@ -117,9 +124,10 @@ const App: React.FC = () => {
                   </div>
                 </ScrollReveal>
 
+                {/* --- KARTU PAKET 3 (Flyer 3) --- */}
                 <ScrollReveal delay={0.4}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketGambar} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
+                    <img src={paketGambarKeluarga} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Keluarga (9 Hari)</h3>
                       <p className="text-gray-700 mb-4">Akomodasi ramah anak dan lansia, penerbangan direct.</p>
@@ -172,6 +180,10 @@ const App: React.FC = () => {
                 </div>
              </div>
           </section>
+          
+          {/* 2. TAMBAHKAN KOMPONEN GALERI DI SINI */}
+          <Galeri /> 
+
           <Kontak />
         </main>
         <Footer /> 
