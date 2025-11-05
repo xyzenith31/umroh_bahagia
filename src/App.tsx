@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React from 'react';
+import React, { useState } from 'react'; // <-- [1] Pastikan useState diimpor
 import { LazyMotion, domAnimation } from 'framer-motion';
 
 import Navbar from './components/Navbar';
@@ -10,6 +10,8 @@ import ScrollReveal from './components/ScrollReveal';
 import Keunggulan from './components/Keunggulan';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
+import Galeri from './components/Galeri';
+import PricelistModal from './components/PricelistModal'; // <-- [2] Pastikan Modal diimpor
 
 import paketGambar16Hari from './assets/heroimage/1.png';
 import paketGambarPlus from './assets/heroimage/2.jpg';
@@ -50,6 +52,9 @@ const testimonials = [
 
 
 const App: React.FC = () => {
+  // [3] State untuk modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <LazyMotion features={domAnimation}>
       
@@ -86,6 +91,9 @@ const App: React.FC = () => {
           <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
             <div className="container mx-auto px-6 text-center">
               <ScrollReveal>
+                {/* INI YANG DIPERBAIKI:
+                  Kesalahan ada di baris ini, ada teks "PRICELISTLengkap." yang nyasar di dalam className.
+                */}
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">
                   Paket Umroh Pilihan
                 </h2>
@@ -95,6 +103,21 @@ const App: React.FC = () => {
                 </p>
               </ScrollReveal>
               
+              {/* [4] Tombol untuk membuka modal */}
+              <ScrollReveal delay={0.1}>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="
+                    mb-12 bg-brand-pink text-white 
+                    px-6 py-3 rounded-full font-semibold 
+                    hover:bg-brand-pink-dark transition duration-300 
+                    shadow-lg transform hover:scale-105
+                  "
+                >
+                  Lihat Jadwal & Pricelist Lengkap
+                </button>
+              </ScrollReveal>
+
               <div className="flex flex-wrap justify-center gap-8">
                 
                 {/* --- KARTU PAKET 1 --- */}
@@ -180,11 +203,21 @@ const App: React.FC = () => {
                 </div>
              </div>
           </section>
+
+          <Galeri /> 
+
           <Kontak />
         </main>
         <Footer /> 
         <BottomNavbar /> 
       </div>
+
+      {/* [5] Render Modal di sini */}
+      <PricelistModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+
     </LazyMotion>
   );
 };

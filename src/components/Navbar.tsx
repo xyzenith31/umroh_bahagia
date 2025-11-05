@@ -3,17 +3,20 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import logoGambar from '../assets/sogeh-bareng-long-logo.png';
 
+// [PERBAIKAN]: Pindahkan navLinks ke LUAR komponen.
+// Ini membuatnya konstan dan tidak dibuat ulang pada setiap render.
+const navLinks = [
+  { id: 'hero', title: 'Beranda' },
+  { id: 'paket', title: 'Paket' },
+  { id: 'keunggulan', title: 'Keunggulan' },
+  { id: 'testimoni', title: 'Testimoni' },
+  { id: 'galeri', title: 'Galeri' },
+  { id: 'kontak', title: 'Kontak' },
+];
+
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero'); 
-
-  const navLinks = [
-    { id: 'hero', title: 'Beranda' },
-    { id: 'paket', title: 'Paket' },
-    { id: 'keunggulan', title: 'Keunggulan' },
-    { id: 'testimoni', title: 'Testimoni' },
-    { id: 'kontak', title: 'Kontak' },
-  ];
 
   // Effect untuk deteksi scroll (mengubah background navbar)
   useEffect(() => {
@@ -50,7 +53,7 @@ const Navbar: React.FC = () => {
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [navLinks]); // (2) UBAH DEPENDENCY HANYA 'navLinks'
+  }, []); // [PERBAIKAN]: Ubah dependency array dari [navLinks] menjadi []
 
   return (
     <header 
