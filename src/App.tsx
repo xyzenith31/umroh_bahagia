@@ -1,6 +1,4 @@
-// src/App.tsx
-
-import React, { useState } from 'react'; // <-- [1] Pastikan useState diimpor
+import React, { useState } from 'react';
 import { LazyMotion, domAnimation } from 'framer-motion';
 
 import Navbar from './components/Navbar';
@@ -11,9 +9,8 @@ import Keunggulan from './components/Keunggulan';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
 import Galeri from './components/Galeri';
-import PricelistModal from './components/PricelistModal'; // <-- [2] Pastikan Modal diimpor
+import PricelistModal from './components/PricelistModal';
 
-import paketGambar16Hari from './assets/heroimage/1.png';
 import paketGambarPlus from './assets/heroimage/2.jpg';
 import paketGambarKeluarga from './assets/heroimage/3.jpg';
 
@@ -52,7 +49,6 @@ const testimonials = [
 
 
 const App: React.FC = () => {
-  // [3] State untuk modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -91,9 +87,6 @@ const App: React.FC = () => {
           <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
             <div className="container mx-auto px-6 text-center">
               <ScrollReveal>
-                {/* INI YANG DIPERBAIKI:
-                  Kesalahan ada di baris ini, ada teks "PRICELISTLengkap." yang nyasar di dalam className.
-                */}
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">
                   Paket Umroh Pilihan
                 </h2>
@@ -103,7 +96,6 @@ const App: React.FC = () => {
                 </p>
               </ScrollReveal>
               
-              {/* [4] Tombol untuk membuka modal */}
               <ScrollReveal delay={0.1}>
                 <button
                   onClick={() => setIsModalOpen(true)}
@@ -120,10 +112,8 @@ const App: React.FC = () => {
 
               <div className="flex flex-wrap justify-center gap-8">
                 
-                {/* --- KARTU PAKET 2 --- */}
                 <ScrollReveal delay={0.3}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* GAMBAR 2 (INI YANG DIUBAH) */}
                     <img src={paketGambarPlus} alt="Paket Umroh Plus" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Plus (12 Hari)</h3>
@@ -133,10 +123,8 @@ const App: React.FC = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* --- KARTU PAKET 3 --- */}
                 <ScrollReveal delay={0.4}>
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    {/* GAMBAR 3 (INI YANG DIUBAH) */}
                     <img src={paketGambarKeluarga} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
                       <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Keluarga (9 Hari)</h3>

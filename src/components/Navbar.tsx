@@ -1,10 +1,7 @@
-// src/components/Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import logoGambar from '../assets/sogeh-bareng-long-logo.png';
 
-// [PERBAIKAN]: Pindahkan navLinks ke LUAR komponen.
-// Ini membuatnya konstan dan tidak dibuat ulang pada setiap render.
 const navLinks = [
   { id: 'hero', title: 'Beranda' },
   { id: 'paket', title: 'Paket' },
@@ -18,7 +15,6 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero'); 
 
-  // Effect untuk deteksi scroll (mengubah background navbar)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -29,7 +25,6 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  // Effect untuk SCROLL-SPY (deteksi section aktif)
   useEffect(() => {
     const sections = navLinks
       .map(link => document.getElementById(link.id))
@@ -39,7 +34,7 @@ const Navbar: React.FC = () => {
 
     const observerOptions = {
       root: null,
-      threshold: 0.6, // 60% section terlihat
+      threshold: 0.4, 
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -53,7 +48,7 @@ const Navbar: React.FC = () => {
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
-  }, []); // [PERBAIKAN]: Ubah dependency array dari [navLinks] menjadi []
+  }, []);
 
   return (
     <header 
@@ -72,7 +67,6 @@ const Navbar: React.FC = () => {
         ${isScrolled ? 'py-2' : 'py-3'}
       `}>
         
-        {/* === LOGO (Ukuran besar) === */}
         <a 
           href="#hero" 
           className="flex-shrink-0 transition-transform duration-300 transform hover:scale-105"
@@ -84,10 +78,8 @@ const Navbar: React.FC = () => {
           />
         </a>
         
-        {/* === Menu Navigasi Desktop === */}
         <div className="hidden md:flex">
           
-          {/* === Latar Belakang "Saklar" === */}
           <div className="relative flex items-center p-1 bg-black/20 rounded-full">
             
             {navLinks.map((link) => (
@@ -106,7 +98,6 @@ const Navbar: React.FC = () => {
                 `}
               >
                 
-                {/* === KAPSUL PUTIH (SLIDING) === */}
                 {activeSection === link.id && (
                   <motion.span
                     className="absolute inset-0 z-0 bg-white"
@@ -120,7 +111,7 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             
-          </div> {/* Akhir dari "Saklar" */}
+          </div>
 
         </div>
         

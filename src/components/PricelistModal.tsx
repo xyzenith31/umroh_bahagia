@@ -1,9 +1,7 @@
-// src/components/PricelistModal.tsx
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiX } from 'react-icons/hi'; // Icon untuk tombol close
+import { HiX } from 'react-icons/hi';
 
-// Impor gambar pricelist yang sudah Anda simpan
 import pricelistImage from '../assets/pricelist-lengkap.jpg';
 
 interface PricelistModalProps {
@@ -16,7 +14,6 @@ const PricelistModal: React.FC<PricelistModalProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -25,10 +22,9 @@ const PricelistModal: React.FC<PricelistModalProps> = ({ isOpen, onClose }) => {
             className="
               fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm
             "
-            onClick={onClose} // Menutup modal saat backdrop diklik
+            onClick={onClose} 
           />
           
-          {/* Konten Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -40,7 +36,6 @@ const PricelistModal: React.FC<PricelistModalProps> = ({ isOpen, onClose }) => {
               flex flex-col
             "
           >
-            {/* Tombol Close */}
             <button
               onClick={onClose}
               className="
@@ -53,7 +48,6 @@ const PricelistModal: React.FC<PricelistModalProps> = ({ isOpen, onClose }) => {
               <HiX className="w-6 h-6" />
             </button>
             
-            {/* Wrapper Gambar (agar bisa di-scroll jika terlalu tinggi) */}
             <div className="w-full h-full bg-white rounded-lg shadow-xl overflow-y-auto">
               <img 
                 src={pricelistImage} 

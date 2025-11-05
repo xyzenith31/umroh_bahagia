@@ -1,19 +1,15 @@
-// src/components/Kontak.tsx
-
 import React from 'react';
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 
 const Kontak: React.FC = () => {
-  // Nomor WhatsApp tujuan
-  const whatsappNumber = "6281234567890"; // Ganti dengan nomor WhatsApp Anda (tanpa + atau 0 di depan jika sudah 62)
+  const whatsappNumber = "6281234567890";
   const whatsappMessage = encodeURIComponent("Assalamu'alaikum, saya ingin bertanya tentang paket umroh.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-  // Link Instagram dan Email yang diminta
   const instagramLink = "https://www.instagram.com/sogehbareng_hajiumroh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
   const emailAddress = "sogehbarengumroh21@gmail.com";
-  const emailLink = `mailto:${emailAddress}?subject=Pertanyaan%20Paket%20Umroh`; // Subjek email
+  const emailLink = `mailto:${emailAddress}?subject=Pertanyaan%20Paket%20Umroh`;
 
   return (
     <section id="kontak" className="py-20 bg-brand-pink-light overflow-hidden">
@@ -49,7 +45,6 @@ const Kontak: React.FC = () => {
 
         <ScrollReveal delay={0.3}>
           <div className="flex justify-center items-center gap-8 mt-4">
-            {/* Instagram Link */}
             <a
               href={instagramLink}
               target="_blank"
@@ -63,7 +58,6 @@ const Kontak: React.FC = () => {
               <FaInstagram className="w-8 h-8" />
             </a>
 
-            {/* Email Link */}
             <a
               href={emailLink}
               className="
