@@ -127,8 +127,8 @@ const App: React.FC = () => {
                   <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
                     <img src={paketGambarKeluarga} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
                     <div className="p-6 pt-0">
-                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Keluarga (9 Hari)</h3>
-                      <p className="text-gray-700 mb-4">Akomodasi ramah anak dan lansia, penerbangan direct.</p>
+                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Promo Umroh (16 hari) </h3>
+                      <p className="text-gray-700 mb-4">Umroh 2x, Tiket pesawat pp, Transportasi lengkap, dan fasilitas lainya.</p>
                       <a href="#kontak" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
                     </div>
                   </div>
