@@ -1,18 +1,24 @@
 import React from 'react';
 import ScrollReveal from './ScrollReveal'; 
 
-import videoContoh1 from '../assets/galeri/1.mp4';
-import videoContoh2 from '../assets/galeri/2.mp4';
-import videoContoh3 from '../assets/galeri/3.mp4';
-import videoContoh4 from '../assets/galeri/4.mp4';
-import videoContoh5 from '../assets/galeri/5.mp4'; 
+// 1. Mengimpor 7 file gambar
+import foto1 from '../assets/galeri/1.jpg';
+import foto2 from '../assets/galeri/2.jpg';
+import foto3 from '../assets/galeri/3.jpg';
+import foto4 from '../assets/galeri/4.jpg';
+import foto5 from '../assets/galeri/5.jpg';
+import foto6 from '../assets/galeri/6.jpg';
+import foto7 from '../assets/galeri/7.jpg';
 
-const videoList = [
-  { src: videoContoh1, title: 'Testimoni Jamaah' },
-  { src: videoContoh2, title: 'Suasana Hotel' },
-  { src: videoContoh3, title: 'Kegiatan Manasik' },
-  { src: videoContoh4, title: 'Momen di Masjidil Haram' },
-  { src: videoContoh5, title: 'Video Tambahan Anda' },
+// 2. Membuat daftar gambar baru
+const imageList = [
+  { src: foto1, alt: 'Galeri foto jamaah 1' },
+  { src: foto2, alt: 'Galeri foto jamaah 2' },
+  { src: foto3, alt: 'Galeri foto jamaah 3' },
+  { src: foto4, alt: 'Galeri foto jamaah 4' },
+  { src: foto5, alt: 'Galeri foto jamaah 5' },
+  { src: foto6, alt: 'Galeri foto jamaah 6' },
+  { src: foto7, alt: 'Galeri foto jamaah 7' },
 ];
 
 const Galeri: React.FC = () => {
@@ -21,8 +27,9 @@ const Galeri: React.FC = () => {
       <div className="container mx-auto px-6">
         
         <ScrollReveal>
+          {/* 3. Mengganti judul dari "Video" menjadi "Foto" */}
           <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
-            Galeri Video Jamaah
+            Galeri Foto Jamaah
           </h2>
           <p className="text-gray-600 mb-12 max-w-lg mx-auto text-center">
             Lihat momen-momen berkesan dari perjalanan ibadah jamaah kami.
@@ -32,7 +39,8 @@ const Galeri: React.FC = () => {
         <ScrollReveal delay={0.2}>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             
-            {videoList.map((video, index) => (
+            {/* 4. Melakukan map/looping pada imageList */}
+            {imageList.map((image, index) => (
               <div 
                 key={index} 
                 className="
@@ -41,20 +49,16 @@ const Galeri: React.FC = () => {
                   border border-gray-200 p-2 sm:p-3 
                 "
               >
-                <div className="w-full aspect-[9/16] bg-black rounded-lg overflow-hidden"> 
-                  <video
-                    src={video.src}
-                    controls
-                    muted
-                    loop
-                    playsInline
+                {/* 5. Mengganti <video> menjadi <img> dan mengubah rasio aspek */}
+                <div className="w-full aspect-square bg-gray-100 rounded-lg overflow-hidden"> 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
                     className="w-full h-full object-cover"
-                    title={video.title}
                   />
                 </div>
-                <p className="p-3 text-sm font-semibold text-gray-700 text-center truncate">
-                  {video.title}
-                </p>
+                {/* Judul <p> di bawah gambar dihapus */}
               </div>
             ))}
 
