@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import logoGambar from '../assets/sogeh-bareng-long-logo.png';
+import logoGambar from '../assets/sogeh-bareng-logo.png';
 
 const navLinks = [
   { id: 'hero', title: 'Beranda' },
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
           <img 
             src={logoGambar} 
             alt="Logo Umroh Bahagia" 
-            className="h-20 sm:h-20 w-auto"
+            className="h-20 sm:h-12 w-auto"
           />
         </a>
         
