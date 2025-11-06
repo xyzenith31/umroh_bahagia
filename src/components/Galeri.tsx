@@ -1,7 +1,6 @@
 import React from 'react';
 import ScrollReveal from './ScrollReveal'; 
 
-// 1. Mengimpor 7 file gambar
 import foto1 from '../assets/galeri/1.jpg';
 import foto2 from '../assets/galeri/2.jpg';
 import foto3 from '../assets/galeri/3.jpg';
@@ -10,7 +9,6 @@ import foto5 from '../assets/galeri/5.jpg';
 import foto6 from '../assets/galeri/6.jpg';
 import foto7 from '../assets/galeri/7.jpg';
 
-// 2. Membuat daftar gambar baru
 const imageList = [
   { src: foto1, alt: 'Galeri foto jamaah 1' },
   { src: foto2, alt: 'Galeri foto jamaah 2' },
@@ -27,7 +25,6 @@ const Galeri: React.FC = () => {
       <div className="container mx-auto px-6">
         
         <ScrollReveal>
-          {/* 3. Mengganti judul dari "Video" menjadi "Foto" */}
           <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
             Galeri Foto Jamaah
           </h2>
@@ -39,7 +36,6 @@ const Galeri: React.FC = () => {
         <ScrollReveal delay={0.2}>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             
-            {/* 4. Melakukan map/looping pada imageList */}
             {imageList.map((image, index) => (
               <div 
                 key={index} 
@@ -49,7 +45,6 @@ const Galeri: React.FC = () => {
                   border border-gray-200 p-2 sm:p-3 
                 "
               >
-                {/* 5. Mengganti <video> menjadi <img> dan mengubah rasio aspek */}
                 <div className="w-full aspect-square bg-gray-100 rounded-lg overflow-hidden"> 
                   <img
                     src={image.src}
@@ -58,7 +53,6 @@ const Galeri: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* Judul <p> di bawah gambar dihapus */}
               </div>
             ))}
 
