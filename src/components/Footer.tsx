@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     >
       <div className="container mx-auto px-6 text-center relative z-10">
         <p className="text-gray-500 text-sm">
-          Copyright &copy; {new Date().getFullYear()} SogehBareng. All rights reserved.
+          Copyright &copy; {new Date().getFullYear()} Pt. Umi Muthmainah Berkah. All rights reserved.
         </p>
       </div>
     </footer>
