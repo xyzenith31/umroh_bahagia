@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   FaUserCheck, FaStar, FaShieldAlt, 
-  FaCheckCircle, FaTimesCircle, FaCrown,
+  FaCheckCircle, FaTimesCircle, // FaCrown dihapus
   FaPlaneDeparture, FaHotel, FaUtensils,
   FaKaaba, FaBus, FaHandHoldingHeart
 } from 'react-icons/fa';

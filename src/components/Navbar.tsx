@@ -5,7 +5,7 @@ import logoGambar from '../assets/sogeh-bareng-logo.png';
 
 const navLinks = [
   { id: 'hero', title: 'Beranda' },
-  { id: 'paket', title: 'Paket Umroh' },
+  { id: 'paket', title: 'Paket' },
   { id: 'keunggulan', title: 'Keunggulan' },
   { id: 'testimoni', title: 'Testimoni' },
   { id: 'galeri', title: 'Galeri' },
@@ -17,23 +17,42 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Effect 1: Ubah style navbar saat discroll
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
+  // Effect 2: Deteksi Section Aktif (Logika Center Line Spy - ANTI MENTAL)
   useEffect(() => {
-    const sections = navLinks.map(link => document.getElementById(link.id)).filter(Boolean);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { threshold: 0.5 }
-    );
-    sections.forEach((section) => section && observer.observe(section));
+    // PERBAIKAN ERROR TS: Menambahkan type predicate ((el): el is HTMLElement => ...)
+    // agar TypeScript yakin bahwa hasilnya adalah HTMLElement, bukan null.
+    const sections = navLinks
+      .map(link => document.getElementById(link.id))
+      .filter((el): el is HTMLElement => el !== null);
+    
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, {
+      // LOGIKA ANTI MENTAL:
+      // Fokus deteksi hanya pada garis tipis (10%) di tengah layar.
+      // Ini mencegah navbar loncat saat melewati section panjang di HP.
+      rootMargin: "-45% 0px -45% 0px",
+      threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
@@ -57,63 +76,81 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+      <header 
         className={`
-          fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out shadow-lg
-          bg-brand-pink
-          ${isScrolled ? 'py-2' : 'py-3'}
+          sticky top-0 z-50 w-full
+          transition-all duration-300 ease-in-out
+          ${isScrolled 
+            ? 'bg-brand-pink/95 backdrop-blur-lg shadow-xl py-2' 
+            : 'bg-brand-pink/70 backdrop-blur-md border-b border-white/20 shadow-md py-3'
+          }
         `}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="flex-shrink-0 z-50 select-none">
-            <motion.img 
+        <nav className="container mx-auto px-6 flex justify-between items-center">
+          
+          {/* Logo */}
+          <a 
+            href="#hero" 
+            onClick={(e) => handleScrollTo(e, 'hero')}
+            className="flex-shrink-0 transition-transform duration-300 transform hover:scale-105"
+          >
+            <img 
               src={logoGambar} 
               alt="Logo Umroh Bahagia" 
-              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'}`}
+              className="h-12 w-auto"
             />
+          </a>
+          
+          {/* Desktop Menu (DESAIN KAPSUL PUTIH) */}
+          <div className="hidden md:flex">
+            <div className="relative flex items-center p-1 bg-black/20 rounded-full">
+              
+              {navLinks.map((link) => (
+                <a 
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => handleScrollTo(e, link.id)}
+                  className={`
+                    relative font-medium text-sm lg:text-base
+                    px-5 py-2 rounded-full
+                    transition-colors duration-300 z-10
+                    ${activeSection === link.id 
+                      ? 'text-brand-pink' 
+                      : 'text-white hover:text-white/80'
+                    }
+                  `}
+                >
+                  {/* Animasi Kapsul Putih */}
+                  {activeSection === link.id && (
+                    <motion.span
+                      layoutId="capsule"
+                      className="absolute inset-0 bg-white rounded-full -z-10 shadow-sm"
+                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  
+                  {link.title}
+                </a>
+              ))}
+              
+            </div>
           </div>
 
-          <div className="hidden md:flex items-center space-x-1 bg-brand-pink-dark/20 p-1 rounded-full border border-white/10">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={(e) => handleScrollTo(e, link.id)}
-                className={`
-                  relative px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-300 cursor-pointer
-                  ${activeSection === link.id 
-                    ? 'text-brand-pink' 
-                    : 'text-white hover:text-white/80'
-                  }
-                `}
-              >
-                {activeSection === link.id && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 bg-white shadow-md rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{link.title}</span>
-              </a>
-            ))}
-          </div>
+          {/* Tombol Mobile Menu (Hamburger) */}
+          <div className="md:hidden flex items-center">
+             <button 
+               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+               className="p-2 rounded-lg text-white hover:bg-white/20 transition-colors"
+               aria-label="Menu"
+             >
+               {isMobileMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
+             </button>
+           </div>
 
-          <div className="md:hidden flex items-center z-50">
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
-              aria-label="Menu"
-            >
-              {isMobileMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
-            </button>
-          </div>
-        </div>
-      </motion.header>
+        </nav>
+      </header>
 
+      {/* Mobile Menu Overlay (Full Screen Pink) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
