@@ -16,7 +16,7 @@ const BottomNavbar: React.FC = () => {
   const leftItems = navItems.slice(0, 2);
   const rightItems = navItems.slice(2, 4);
 
-  const waLink = "https://wa.me/6281234567890?text=Halo%20UmrohBahagia,%20saya%20ingin%20tanya%20paket%20promo...";
+  const waLink = "https://wa.me/6285755337762?text=Halo%20UmrohBahagia,%20saya%20ingin%20tanya%20paket%20promo...";
 
   useEffect(() => {
     const sections = navItems
