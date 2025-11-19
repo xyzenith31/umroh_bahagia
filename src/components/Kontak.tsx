@@ -3,7 +3,7 @@ import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 
 const Kontak: React.FC = () => {
-  const whatsappNumber = "6281234567890";
+  const whatsappNumber = "6285755337762";
   const whatsappMessage = encodeURIComponent("Assalamu'alaikum, saya ingin bertanya tentang paket umroh.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

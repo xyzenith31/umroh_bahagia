@@ -8,11 +8,10 @@ import ScrollReveal from './components/ScrollReveal';
 import Keunggulan from './components/Keunggulan';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import Kontak from './components/Kontak';
+import PromoFlyer from './components/PromoFlyer';
+import PaketUmroh from './components/PaketUmroh';
 import Galeri from './components/Galeri';
 import PricelistModal from './components/PricelistModal';
-
-import paketGambarPlus from './assets/heroimage/2.jpg';
-import paketGambarKeluarga from './assets/heroimage/3.jpg';
 
 const heroImageUrl = 'https://images.pexels.com/photos/32290180/pexels-photo-32290180.jpeg';
 
@@ -47,7 +46,6 @@ const testimonials = [
   }
 ];
 
-
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -61,7 +59,6 @@ const App: React.FC = () => {
         <Navbar />
         
         <main>
-          
           <section 
             id="hero" 
             className="h-screen min-h-[600px] w-full flex items-center justify-center relative text-white text-center bg-cover bg-center"
@@ -77,69 +74,17 @@ const App: React.FC = () => {
               </p>
               <a 
                 href="#paket"
-                className="bg-brand-pink text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-brand-pink-dark transition duration-300 shadow-lg transform hover:scale-105a"
+                className="bg-brand-pink text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-brand-pink-dark transition duration-300 shadow-lg transform hover:scale-105"
               >
                 Lihat Paket
               </a>
             </div>
           </section>
 
-          <section id="paket" className="py-20 bg-brand-pink-light overflow-hidden">
-            <div className="container mx-auto px-6 text-center">
-              <ScrollReveal>
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                  Paket Umroh Pilihan
-                </h2>
-                <p className="text-gray-600 mb-12 max-w-lg mx-auto">
-                  Kami menyediakan berbagai pilihan paket yang bisa disesuaikan 
-                  dengan kenyamanan dan budget Anda.
-                </p>
-              </ScrollReveal>
-              
-              <ScrollReveal delay={0.1}>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="
-                    mb-12 bg-brand-pink text-white 
-                    px-6 py-3 rounded-full font-semibold 
-                    hover:bg-brand-pink-dark transition duration-300 
-                    shadow-lg transform hover:scale-105
-                  "
-                >
-                  Lihat Jadwal & Pricelist Lengkap
-                </button>
-              </ScrollReveal>
-
-              <div className="flex flex-wrap justify-center gap-8">
-                
-                <ScrollReveal delay={0.3}>
-                  <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketGambarPlus} alt="Paket Umroh Plus" className="w-full h-auto object-contain p-4"/>
-                    <div className="p-6 pt-0">
-                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Plus (12 Hari)</h3>
-                      <p className="text-gray-700 mb-4">Hotel bintang 5, plus city tour (Mekkah, Madinah, Jeddah).</p>
-                      <a href="#kontak" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
-                    </div>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={0.4}>
-                  <div className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition duration-300">
-                    <img src={paketGambarKeluarga} alt="Paket Umroh Keluarga" className="w-full h-auto object-contain p-4"/>
-                    <div className="p-6 pt-0">
-                      <h3 className="text-2xl font-bold text-brand-pink-dark mb-2">Paket Promo Umroh (16 hari) </h3>
-                      <p className="text-gray-700 mb-4">Umroh 2x, Tiket pesawat pp, Transportasi lengkap, dan fasilitas lainya.</p>
-                      <a href="#kontak" className="font-bold text-brand-pink hover:text-brand-pink-dark transition">Daftar Paket Ini</a>
-                    </div>
-                  </div>
-                </ScrollReveal>
-
-              </div>
-            </div>
-          </section>
+          <PromoFlyer />
+          <PaketUmroh onOpenModal={() => setIsModalOpen(true)} />
 
           <Keunggulan />
-
           <section id="testimoni" className="py-20 bg-white overflow-hidden">
              <div className="container mx-auto px-6 max-w-5xl">
                 
@@ -150,9 +95,7 @@ const App: React.FC = () => {
                 </ScrollReveal>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  
                   {testimonials.map((testi, index) => (
-                    
                     <ScrollReveal 
                       delay={testi.delay} 
                       key={testi.name}
@@ -172,22 +115,19 @@ const App: React.FC = () => {
                         <p className="text-sm text-gray-500">{testi.location}</p>
                       </div>
                     </ScrollReveal>
-                    
                   ))}
-                  
                 </div>
              </div>
           </section>
 
           <Galeri /> 
-
           <Kontak />
+
         </main>
         <Footer /> 
         <BottomNavbar /> 
+        
       </div>
-
-      {/* [5] Render Modal di sini */}
       <PricelistModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
